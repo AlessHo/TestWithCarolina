@@ -30,7 +30,7 @@ Counter >> count: anInteger [
 { #category : #accessing }
 Counter >> decrement [ 
 
-	count := count - 1  
+	count := count - 2  
 ]
 
 { #category : #accessing }
