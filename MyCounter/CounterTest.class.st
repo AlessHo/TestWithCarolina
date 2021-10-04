@@ -50,5 +50,5 @@ CounterTest >> testStartingAtFive [
 
 | c |
 c := Counter startingAt: 5.
-self assert: c count equals: 5
+self assert: c equals: 5
 ]
