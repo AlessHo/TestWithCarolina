@@ -8,14 +8,21 @@ Class {
 }
 
 { #category : #arithmetic }
-DieHandle >> + aDieHandle [
+DieHandle >> + aDicable [
 
-	| handle |
-	handle := DieHandle new.	 
-	1 to: self diceNumber do: [:n | handle addDie: (self dice at: n)].
-	1 to: aDieHandle diceNumber do: [:n | handle addDie: (aDieHandle dice at: n)].
+	"| handle |
+	handle := DieHandle new.	 "
 	
-	^ handle .
+	"Aless"
+	"1 to: self diceNumber do: [:n | handle addDie: (self dice at: n)]. 
+	1 to: aDieHandle diceNumber do: [:n | handle addDie: (aDieHandle dice at: n)]."
+	
+	"self dice do: [ :each | handle addDie: each ].
+	aDieHandle dice do: [ :each | handle addDie: each ].
+	
+	^ handle "
+	
+	^ aDicable sumWithHandle: self
 	
 		
 	
@@ -71,4 +78,22 @@ aDieHandle := DieHandle new
 1 to: aDieHandle diceNumber do: [:n | result := result + (aDieHandle dice at: n) roll]"
 
 
+]
+
+{ #category : #arithmetic }
+DieHandle >> sumWithDie: aDie [
+	| handle |
+	handle := self class new.
+	self dice do: [ :each | handle addDie: each ].
+	handle addDie: aDie.
+	^ handle
+]
+
+{ #category : #'as yet unclassified' }
+DieHandle >> sumWithHandle: aDieHandle [
+  | handle |
+  handle := self class new.
+  self dice do: [ :each | handle addDie: each ].
+  aDieHandle dice do: [ :each | handle addDie: each ].
+  ^ handle
 ]
